@@ -1,4 +1,4 @@
-TARGET = aula6.bin
+TARGET = find
 LIBS = 
 CC = gcc
 CFLAGS = -O2 -Wall -w -Wextra

@@ -7,21 +7,25 @@
  * where needle is the value to find in a haystack of values
  */
        
-#include <cs50.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "helpers.h"
 
 // maximum amount of hay
-const int MAX = 65536;
+#define MAXSIZE 1024
 
-int main(int argc, string argv[])
-{
+int main(int argc, char* argv[]){
+    int haysize;
     // ensure proper usage
-    if (argc != 2)
-    {
-        printf("Usage: ./find needle\n");
+    if(argc == 3){
+        haysize = atoi(argv[2]);
+    }
+    else if (argc == 2){
+        haysize = MAXSIZE;
+    }
+    else{
+        printf("Usage: ./find needle [haystack_size]\n");
         return -1;
     }
 
@@ -29,35 +33,27 @@ int main(int argc, string argv[])
     int needle = atoi(argv[1]);
 
     // fill haystack
-    int size;
-    int haystack[MAX];
-    for (size = 0; size < MAX; size++)
-    {
-        // wait for hay until EOF
-        printf("\nhaystack[%i] = ", size);
-        int straw = get_int();
-        if (straw == INT_MAX)
-        {
-            break;
-        }
-     
-        // add hay to stack
-        haystack[size] = straw;
+    int i;
+    int haystack[haysize];
+    printf("Needle: %d\nHaystack size: %d\n", needle, haysize);
+    for(i=0; i<haysize; i++){
+        haystack[i] = rand() % haysize;
     }
-    printf("\n");
+    print_array(haystack, haysize);
 
     // sort the haystack
-    sort(haystack, size);
+    sort(haystack, haysize);
+    print_array(haystack, haysize);
 
     // try to find needle in haystack
-    if (search(needle, haystack, size))
+    if (search(needle, haystack, haysize))
     {
-        printf("\nFound needle in haystack!\n\n");
+        printf("Found needle in haystack!\n");
         return 0;
     }
     else
     {
-        printf("\nDidn't find needle in haystack.\n\n");
+        printf("Didn't find needle in haystack.\n");
         return 1;
     }
 }
