@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1441396743 source:/home/ariel/Dropbox/ARIELSANTOS/AEDS/Aula5/fila.c
+	<stdio.h>
+	<stdlib.h>
+	"fila.h"
+
+1441395872 /home/ariel/Dropbox/ARIELSANTOS/AEDS/Aula5/fila.h
+
+1443531437 source:/home/ariel/Dropbox/ARIELSANTOS/AEDS/Aula5/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

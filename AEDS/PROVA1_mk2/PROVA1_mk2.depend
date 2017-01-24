@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1440823110 source:/home/ariel/Dropbox/ARIELSANTOS/AEDS/PROVA1_mk2/main.c
+	<stdio.h>
+	<stdlib.h>
+

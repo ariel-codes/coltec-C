@@ -1,0 +1,58 @@
+/**********************************************
+				COLTEC­ UFMG
+			Introdução a Programação
+Professores: João Eduardo Montandon e Virgínia Fernandes Mota
+Turmas: 103 e 106
+Especificação do Trabalho Prático (20 pontos)
+​Data de entrega: 13/07
+(Nº de participantes: 2)
+ ***********************************************/
+A empresa YSolutions contratou sua equipe para desenvolver um software de Banco
+Simplificado. Esse software deve ter obrigatoriamente as seguintes funcionalidades:
+
+● Dois tipos de usuário: Gerente e Cliente. Cada tipo de usuário tem acesso a um menu
+diferente.
+
+● Para acessar o sistema, deve ser pedido um login e uma senha. No caso do gerente, o
+login é feito através de sua matrícula no Banco e uma senha de no mínimo 5 dígitos. No
+caso de clientes, o login é feito com o número da conta e uma senha de no mínimo 8
+dígitos. As informações de login se encontram em um arquivo login. Ponto extra para o
+aluno que fizer uma forma de criptografia desse arquivo, isto é, nenhuma pessoa que
+abrir o arquivo conseguirá ler as informações.
+
+● As informações de conta de cada cliente deve ser salva em um arquivo. O nome deste
+arquivo deve corresponder à conta do cliente. As informações da conta são: Nome do
+cliente, saldo, limite de transferência e data de cadastro no sistema.
+
+● Um cliente só existe se sua conta existir, e vice­versa.
+
+● Gerentes e Clientes tem permissões e ações diferentes no sistema:
+	○ Gerente: Criar/Excluir conta. Alterar limites de transferência. Listar clientes
+	cadastrados (por ordem alfabética e por data de cadastro). Listar total de
+	reservas bancárias do banco (quanto dinheiro o banco possui depositado).
+	○ Cliente: Visualizar saldo. Depositar/Retirar valores. Realizar transferências entre
+	clientes (de acordo com o limite estipulado). Visualizar data de cadastro.
+	Visualizar limite para transferência. Visualizar extrato (depósitos, retiradas e
+	transferências feitas na conta com respectiva data).
+
+-----Atenção:
+● Faça com que seu código seja modulado. Crie um .c e .h para as funções do seu
+sistema e deixe o main.c apenas para as execuções iniciais (menu, login). Lembre­-se
+de incluir o .h sempre que necessário e criar um makefile.
+
+● Crie: gerente.c, gerente.h, cliente.c, cliente.h e main.c
+
+● Atenção para os arquivos que devem ser manipulados: um de login de usuários e um
+para cada conta de cliente.
+
+● Lembre­se de tratar todos os erros que podem ocorrer no sistema (usuário e/ou senha
+inválidos, arquivo não existente, transferência fora do limite, saldo insuficiente, entre
+outros).
+
+● Códigos que não compilam e/ou não executam não serão avaliados.
+
+● Trabalhos iguais não serão avaliados.
+
+● Faça um código legível e comente­-o.
+
+Bom trabalho!

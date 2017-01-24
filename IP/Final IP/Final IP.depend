@@ -1,0 +1,130 @@
+# depslib dependency file v1.0
+1435598691 source:c:\users\ariel\dropbox\arielsantos\final ip\cliente.c
+
+1435598664 source:c:\users\ariel\dropbox\arielsantos\final ip\gerente.c
+
+1435600822 source:c:\users\ariel\dropbox\arielsantos\final ip\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdlib.h>
+
+1435600822 
+
+1435607690 source:/opt/segundo-ano/Documentos/Ariel_MEU/Final IP/main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+
+1436940046 source:/home/ariel/Dropbox/ARIELSANTOS/Final IP/main.c
+	"utilities.h"
+	"cliente.h"
+	"gerente.h"
+
+1436940195 source:/home/ariel/Dropbox/ARIELSANTOS/Final IP/utilities.c
+	"utilities.h"
+
+1436940159 source:/home/ariel/Dropbox/ARIELSANTOS/Final IP/cliente.c
+	"cliente.h"
+
+1436940125 source:/home/ariel/Dropbox/ARIELSANTOS/Final IP/gerente.c
+	"gerente.h"
+
+1436940064 /home/ariel/Dropbox/ARIELSANTOS/Final IP/utilities.h
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<string.h>
+	<crypt.h>
+	<termios.h>
+	<errno.h>
+	<unistd.h>
+	<time.h>
+	<stdbool.h>
+
+1436938895 /home/ariel/Dropbox/ARIELSANTOS/Final IP/cliente.h
+	"utilities.h"
+
+1436937559 /home/ariel/Dropbox/ARIELSANTOS/Final IP/gerente.h
+	"utilities.h"
+
+1436127764 source:/home/ariel/Dropbox/ARIELSANTOS/Final IP/main_debug.c
+	<dirent.h>
+	<stdio.h>
+	<string.h>
+	<dirent.h>
+	<stdio.h>
+	<string.h>
+
+1436148880 source:/opt/segundo-ano/Documentos/Ariel_MEU/Code/Final_IP/cliente.c
+	"cliente.h"
+	"cliente.h"
+
+1436146278 /opt/segundo-ano/Documentos/Ariel_MEU/Code/Final_IP/cliente.h
+	"utilities.h"
+	"utilities.h"
+
+1436212560 /opt/segundo-ano/Documentos/Ariel_MEU/Code/Final_IP/utilities.h
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<string.h>
+	<crypt.h>
+	<termios.h>
+	<errno.h>
+	<unistd.h>
+	<time.h>
+	<stdbool.h>
+
+1436209430 source:/opt/segundo-ano/Documentos/Ariel_MEU/Code/Final_IP/main.c
+	"utilities.h"
+	"cliente.h"
+	"gerente.h"
+
+1436155782 /opt/segundo-ano/Documentos/Ariel_MEU/Code/Final_IP/gerente.h
+	"utilities.h"
+	"utilities.h"
+
+1436205946 source:/opt/segundo-ano/Documentos/Ariel_MEU/Code/Final_IP/utilities.c
+	"utilities.h"
+
+1436205397 source:/opt/segundo-ano/Documentos/Ariel_MEU/Code/Final_IP/gerente.c
+	"gerente.h"
+	"gerente.h"
+
+1436816907 source:/opt/segundo-ano/Documentos/Ariel_MEU/Code/Final IP/cliente.c
+	"cliente.h"
+
+1436816894 /opt/segundo-ano/Documentos/Ariel_MEU/Code/Final IP/cliente.h
+	"utilities.h"
+
+1436815486 /opt/segundo-ano/Documentos/Ariel_MEU/Code/Final IP/utilities.h
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<string.h>
+	<crypt.h>
+	<termios.h>
+	<errno.h>
+	<unistd.h>
+	<time.h>
+	<stdbool.h>
+
+1436817047 source:/opt/segundo-ano/Documentos/Ariel_MEU/Code/Final IP/gerente.c
+	"gerente.h"
+
+1436816894 /opt/segundo-ano/Documentos/Ariel_MEU/Code/Final IP/gerente.h
+	"utilities.h"
+
+1436817070 source:/opt/segundo-ano/Documentos/Ariel_MEU/Code/Final IP/main.c
+	"utilities.h"
+	"cliente.h"
+	"gerente.h"
+	"cliente.h"
+
+1436816471 source:/opt/segundo-ano/Documentos/Ariel_MEU/Code/Final IP/utilities.c
+	"utilities.h"
+

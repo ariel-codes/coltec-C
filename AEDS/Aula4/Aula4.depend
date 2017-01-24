@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1440377018 source:/home/ariel/Dropbox/ARIELSANTOS/AEDS/Aula4/listas.c
+	"listas.h"
+
+1440376996 /home/ariel/Dropbox/ARIELSANTOS/AEDS/Aula4/listas.h
+	<stdio.h>
+	<stdlib.h>
+
+1440378480 source:/home/ariel/Dropbox/ARIELSANTOS/AEDS/Aula4/pilha.c
+	<stdio.h>
+	<stdlib.h>
+	"pilha.h"
+
+1440377316 /home/ariel/Dropbox/ARIELSANTOS/AEDS/Aula4/pilha.h
+	<math.h>
+

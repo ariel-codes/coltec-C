@@ -1,0 +1,89 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct carro_fila
+{
+    char placa[7];
+    struct carro_fila* prox;
+} carro;
+
+typedef struct fila_garagem
+{
+    carro* prim;
+    carro* ult;
+} f_garagem;
+
+f_garagem* garagem=NULL;
+
+void estacionar()
+{
+    carro* n= (carro*) malloc(sizeof(carro));
+    if(garagem->prim== NULL && garagem->ult== NULL)
+        garagem->prim=garagem->ult=n;
+    else
+    {
+        garagem->ult->prox=n;
+        garagem->ult=n;
+    }
+    n->prox=NULL;
+    printf("Insira a placa: ");
+    clear();
+    fgets(n->placa, 7, stdin);
+    n->placa[7]='\0';
+}
+
+void retirar()
+{
+    char saindo[7];
+    printf("Insira a placa a ser retirada:");
+    clear();
+    fgets(saindo, 7, stdin);
+    while(!strcmp(garagem->prim->placa, saindo)){
+        
+    }
+}
+
+void imprime()
+{
+    carro* print=garagem->prim;
+    while(print!=NULL)
+    {
+        printf("-->CARRO:%s", print->placa);
+        fflush(stdout);
+        print=print->prox;
+    }
+}
+
+void clear (void)
+{
+    fflush(stdout);
+    fflush(stdin);
+}
+
+int main()
+{
+    garagem=(f_garagem*) malloc(sizeof(f_garagem));
+    garagem->prim=garagem->ult=NULL;
+    int op=0;
+    while(1)
+    {
+        printf("O quê você quer fazer? (+placa do carro de 6 dígitos) \n\t 1 -> estacionar \n\t 2 -> retirar \n\t 3 -> listar \n\t 0 -> sair \n");
+        clear();
+        scanf("%d", &op);
+        clear();
+        switch(op){
+            case 0:
+                exit(0);
+            case 1:
+                estacionar();
+                break;
+            case 2:
+                retirar();
+                break;
+            case 3:
+                imprime();
+        }
+    }
+    return 0;
+}

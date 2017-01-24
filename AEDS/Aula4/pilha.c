@@ -1,0 +1,111 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "pilha.h"
+
+
+
+Pilha *pilha_cria()
+{
+    Pilha *p = (Pilha*) malloc (sizeof(Pilha));
+    p->n=0;
+    return p;
+}
+
+
+void pilha_push(Pilha *p,int v)
+{
+    if (p->n == N)
+    {
+        printf("Capacidade da pilha estourou.");
+        exit(1);
+    }
+    p->vet[p->n] = v;
+    p->n++;
+}
+
+int pilha_vazia(Pilha *p)
+{
+    return (p->n == 0);
+}
+
+
+void pilha_libera(Pilha *p)
+{
+    free(p);
+}
+
+int pilha_pop(Pilha *p)
+{
+    int v;
+    if(pilha_vazia(p))
+    {
+        printf("Pilha vazia!");
+
+    }
+
+    v = p -> vet[p->n-1];
+    p->n--;
+    return v;
+}
+
+void pilha_imprime(Pilha *p)
+{
+
+    int i;
+    for(i=p->n-1; i>=0; i--)
+        printf("%d",p->vet[i]);
+}
+
+///IMPLEMENTAÇÃO EM LISTA ENCADEADA
+
+int pilha_enc_vazia(Pilha_enc* pile)
+{
+    return (pile->top==NULL);
+}
+
+Pilha_enc* pilha_enc_cria()
+{
+    Pilha_enc* pile= (Pilha_enc*) malloc(sizeof(Pilha_enc));
+    pile->top= NULL;
+    return pile;
+}
+
+void pilha_enc_push(Pilha_enc* pile, float v)
+{
+    lista_p* novo= (lista_p*) malloc(sizeof(lista_p));
+    novo->prev=pile->top;
+    novo->info=v;
+    pile->top=novo;
+}
+
+float pilha_enc_pop(Pilha_enc* pile)
+{
+    lista_p* top;
+    float v;
+    if(pilha_enc_vazia(pile))
+        return(nanf(""));
+    top=pile->top;
+    v=top->info;
+    pile->top=top->prev;
+    free(top);
+    return v;
+}
+
+void pilha_enc_libera(Pilha_enc* pile)
+{
+    lista_p* queue= pile->top;
+    while(queue!= NULL)
+    {
+        lista_p* t=queue->prev;
+        free(queue);
+        queue=t;
+    }
+    free(pile);
+}
+
+void pilha_enc_imprime(Pilha_enc* pile)
+{
+    lista_p* queue;
+    for(queue=pile->top; queue!=NULL; queue=queue->prev)
+        printf("\n%f", queue->info);
+}

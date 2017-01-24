@@ -1,0 +1,292 @@
+#include "utilities.h"
+
+/*void refresh(){
+    system("#/bin/bash \n cp -r ./files/* ./files.bkp \n cp -r ./files.bkp/* ./files");
+}*/
+
+void add_money(float money)
+{
+    float previous;
+    FILE* banco;
+    FILE* after;
+    banco=fopen(reservas, "r");
+    rewind(banco);
+    if (banco==NULL)
+    {
+        perror("Erro! ");
+        exit(-1000);
+    }
+    fscanf(banco,"%f", &previous);
+    previous+=money;
+    fclose(banco);
+    after=fopen(reservas, "w+");
+    fprintf(banco, "%.2f", previous);
+    fflush(NULL);
+    fclose(after);
+}
+
+char* get_time()
+{
+    time_t rawtime;
+    struct tm * timeinfo;
+    char* buffer;
+
+    buffer=(char*) calloc(18, sizeof(char));
+
+    time (&rawtime);
+    timeinfo = gmtime(&rawtime);
+
+    strftime (buffer,18,"%d/%m/%y-%T",timeinfo);
+    return buffer;
+}
+
+void fgets_n(char* str1, int num)
+{
+    int i=0;
+    fflush(stdin);
+    fgets(str1, num, stdin);
+    while(str1[i]!='\n' && i<num)
+    {
+        i++;
+    }
+    str1[i]='\0';
+}
+
+void acresce_char(char* number, int pos)  /* Sim, essa funçao pega um número numa string (o número da conta do próximo usuário) e acresce 1 a ele */
+{
+    if(pos>=0)
+    {
+        if(number[pos]>47 && number[pos]<58)
+        {
+            if(number[pos]!='9')
+                number[pos]+=1;
+            else if(pos!=0)
+            {
+                number[pos]='0';
+                acresce_char(number, pos-1);
+            }
+            else exit(-30);
+        }
+    }
+}
+
+void log_user(char op, char* origem , float value, char* destino)
+{
+    int i,s;
+    char* location;
+    char* data;
+    FILE* archive;
+    data=get_time();
+
+    if(op=='t')
+    {
+        i=strlen(origem)+strlen(user_unique) + 4;
+        location= (char*) calloc(i, sizeof(char));
+        strcpy(location, user_unique);
+        strcat(location, origem);
+        strcat(location, ".log");
+        archive=fopen(location, "a");
+        fprintf(archive, "DATA: %s \t TRANFERENCIA:%f.%s\n", data, value, destino);
+        fclose(archive);
+        for(s=0; s<i; s++)
+            location[s]=0;
+        strcpy(location, user_unique);
+        strcat(location, destino);
+        strcat(location, ".log");
+        archive=fopen(location, "a");
+        fprintf(archive, "DATA: %s \t TRANFERENCIA:%f<-%s;%s\n", data, value, destino, get_time());
+        fclose(archive);
+    }
+    if(op=='s')
+    {
+        i=strlen(origem)+strlen(user_unique) + 4;
+        location= (char*) calloc(i, sizeof(char));
+        strcpy(location, user_unique);
+        strcat(location, origem);
+        strcat(location, ".log");
+        archive=fopen(location, "a");
+        fprintf(archive, "DATA: %s \t SAQUE:%f\n", data, value);
+        fclose(archive);
+    }
+    if(op=='d')
+    {
+        i=strlen(origem)+strlen(user_unique) + 4;
+        location= (char*) calloc(i, sizeof(char));
+        strcpy(location, user_unique);
+        strcat(location, origem);
+        strcat(location, ".log");
+        archive=fopen(location, "a");
+        fprintf(archive, "DATA: %s \t DEPÓSITO:%f\n", data, value);
+        fclose(archive);
+        free(location);
+    }
+}
+
+void write_user(user usr, bool is_new)
+{
+    char* location;
+    char* log_loc;
+    char* nxt_number;
+    int i=0;
+    FILE* archive;
+    FILE* personal;
+
+    nxt_number=(char*) calloc(sizeof(usr.numero), sizeof(char));
+    strcpy(nxt_number, usr.numero);
+    acresce_char(nxt_number, strlen(nxt_number)-1);
+
+    i=strlen(usr.numero)+strlen(user_unique) + 4;
+    location= (char*) malloc(i*sizeof(char));
+    log_loc= (char*) malloc(i*sizeof(char));
+    strcpy(location, user_unique);
+    strcat(location, usr.numero);
+    strcpy(log_loc, location);
+    strcat(log_loc, ".log");
+    strcat(location, ".acc");
+    if(is_new==true)
+    {
+        if( access( location, F_OK ) != -1 )
+        {
+            printf("Arquivo já existe, abortando!");
+            exit(-1);
+        }
+        else
+        {
+            archive=fopen(user_list, "r+");
+            fseek(archive, -1, SEEK_END);
+            fprintf(archive, "::%s\n%s\n", usr.senha, nxt_number);
+            archive=freopen(log_loc, "w", archive);
+            if (archive==NULL)
+            {
+                perror("Erro!");
+                exit(-1000);
+            }
+            fclose(archive);
+        }
+    }
+    personal=fopen(location,"w");
+    if (personal==NULL)
+    {
+        perror("Erro!");
+        exit(-1000);
+    }
+    i=0;
+    while(usr.nome[i]!='\n' && i<50)
+    {
+        i++;
+    }
+    usr.nome[i]='\0';
+    fprintf(personal, "%s\n%.2f\n%.2f\n%d\n%s" , usr.nome, usr.saldo, usr.limite, usr.admin, usr.data);
+    fclose(personal);
+    free(location);
+    free(log_loc);
+    free(nxt_number);
+}
+
+user free_user(user aloc){
+    free(aloc.nome);
+    aloc.nome=NULL;
+    free(aloc.data);
+    aloc.data=NULL;
+    free(aloc.numero);
+    aloc.numero=NULL;
+    free(aloc.senha);
+    aloc.senha=NULL;
+    return aloc;
+}
+
+user aloc_user(user aloc)
+{
+    aloc.data=(char*) calloc(18, sizeof(char));
+    aloc.nome=(char*) calloc(50, sizeof(char));
+    aloc.senha=(char*) calloc(8, sizeof(char));
+    aloc.numero=(char*) calloc(10, sizeof(char));
+    return aloc;
+}
+
+char* loadfile_str(char* input_file_name)
+{
+    char *file_contents;
+    long input_file_size;
+    FILE *input_file = fopen(input_file_name, "rb");
+    fseek(input_file, 0, SEEK_END);
+    input_file_size = ftell(input_file);
+    rewind(input_file);
+    file_contents = malloc(input_file_size * (sizeof(char)));
+    fread(file_contents, sizeof(char), input_file_size, input_file);
+    fclose(input_file);
+    return file_contents;
+}
+
+void read_user(char* number, user account)
+{
+    FILE* personal_data;
+    char* location;
+    int i;
+
+    strcpy(account.numero, number);
+    i=strlen(account.numero)+strlen(user_unique) + 4;
+    location= (char *) malloc(i*sizeof(char));
+    strcpy(location, user_unique);
+    strcat(location, number);
+    strcat(location, ".acc");
+    personal_data=fopen(location, "r");
+    if (personal_data==NULL)
+    {
+        perror("Erro!");
+        exit(-1000);
+    }
+    fseek(personal_data, 0, SEEK_SET);
+    fgets(account.nome, sizeof(account.nome), personal_data);
+    fscanf(personal_data,"%f", &account.saldo);
+    fseek(personal_data, 1, SEEK_CUR);
+    fscanf(personal_data,"%f", &account.limite);
+    fseek(personal_data, 1, SEEK_CUR);
+    fscanf(personal_data,"%d", &account.admin);
+    fseek(personal_data, 1, SEEK_CUR);
+    fgets(account.data, 25, personal_data);
+
+    fclose(personal_data);
+    free(location);
+}
+
+user logger(bool logged)
+{
+    user account;
+    char detail[]="::";
+    char* id;
+    id=(char*) calloc(24, sizeof(char));
+    char go;
+    account=aloc_user(account);
+    char list[] = "./files/login";
+
+    printf("\n Entre o número da conta:");
+    getchar();
+    fflush(stdin);
+    fgets_n(account.numero, 10);
+    fflush(stdin);
+    getchar();
+    account.senha=crypt(getpass("Senha (máx de 8 caracteres):"), account.numero);
+    strcat(id, account.numero);
+    strcat(id, detail);
+    strcat(id, account.senha);
+    fflush(stdin);
+    if(strstr(loadfile_str(list), id)==NULL)
+    {
+        printf("\n Dados Incorretos \n Quer tentar novamente? (S ou n)");
+        fflush(stdin);
+        go=getchar();
+        free_user(account);
+        if(go=='s' || go=='S')
+        {
+            logger(false);
+        }
+        else return account;
+    }
+    else
+    {
+        read_user(account.numero, account);
+        logged=true;
+    }
+    return account;
+}

@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <crypt.h>
+#include <termios.h>
+#include <errno.h>
+#include <utilities.h>
+
+#ifndef GERENTE_H_INCLUDED
+#define GERENTE_H_INCLUDED
+
+static const char user_list[] = "./files/accounts.bnk";
+
+void admin_menu(user *current);
+
+void add_user();
+
+#endif // GERENTE_H_INCLUDED

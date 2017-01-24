@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#include <crypt.h>
+#include <termios.h>
+#include <errno.h>
+#include <unistd.h>
+#include <time.h>
+
+#ifndef UTILITIES_H_INCLUDED
+#define UTILITIES_H_INCLUDED
+#include <stdbool.h>
+
+typedef struct _user
+{
+    char* numero;///Tamanho padrão=10
+    char* senha;///Tamanho padrão=8
+    bool admin;
+    float saldo;
+    float limite;
+    char* data; ///Tamanho padrão=18
+    char* nome; ///Tamanho padrão=50
+} user;
+
+static const char user_list[] = "./files/login";
+static const char user_unique[] = "./files/contas/";
+static const char reservas[] = "./files/reserve" ;
+
+user free_user(user aloc);
+
+void refresh();	//Função obsoleta
+
+void acresce_char(char* number, int pos); ///Aumenta a string de números user.numero em 1, para poder imprimir ao arquivo de login
+
+void log_user(char op, char* origem , float value, char* destino);
+
+void write_user(user usr, bool is_new); ///Escreve nos arquivos /files/login e /files/contas
+
+user aloc_user();
+
+user logger(bool logged);
+
+void read_user(char number[10], user account);
+
+char* get_time();
+
+void fgets_n(char* str1, int num);
+
+char* loadfile_str(char* input_file_name);
+
+void add_money(float money);
+
+#endif //UTILITIES_H_INCLUDED

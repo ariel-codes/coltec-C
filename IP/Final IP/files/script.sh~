@@ -1,0 +1,3 @@
+#/bin/bash
+#/bin/shell
+touch temp ; echo Insira o número da conta a ser removida: ; read conta1 ; echo Confirme o número da conta: ; read conta ; if [ $conta1 = $conta ] ; then rm ./files/contas/$conta.acc ; rm ./files/contas/$conta.log ; grep -v \"$conta\" ./files/accounts.bnk > temp ; mv temp ./files/accounts.bnk \n ; else echo Contas Inconsistentes! fi

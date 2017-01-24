@@ -1,0 +1,4 @@
+Typo	Swap user for account in read_user
+Added	Bunch of funtions
+Fixed	Freed most pointers in gerente.c
+Applied	Round-all fixes

@@ -1,0 +1,13 @@
+#include "arvore.h"
+
+arv_var* var_cria(char* label){
+	arv_var* node= (arv_var*) malloc(sizeof(arv_var));
+    strcpy(node->label, label);
+    node->prim= (arv_var*) NULL;
+    node->prox= (arv_var*) NULL;
+    return node;
+}
+
+void var_insere(arv_var* root, arv_var* node){
+	
+}

@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1432560562 source:c:\users\ariel\dropbox\arielsantos\[unsorted]\libs\main.c
+	<stdio.h>
+
+1432152268 
+
+1432224552 source:/home/ariel/Dropbox/ARIELSANTOS/[unsorted]/libs/main.c
+	<stdio.h>
+	<stdlib.h>
+	"matrix.h"
+	<stdio.h>
+	<stdlib.h>
+	"matrix.h"
+
+1432224517 /home/ariel/Dropbox/ARIELSANTOS/[unsorted]/libs/matrix.h
+	<stdlib.h>
+	<stdlib.h>
+
+1432224517 c:\users\ariel\dropbox\arielsantos\[unsorted]\libs\matrix.h
+	<stdlib.h>
+

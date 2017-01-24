@@ -1,0 +1,5 @@
+#bin/bash
+sed '/^$/d' login
+sed '/^$/d' reserve
+cp -r ./files/* ./files.bkp
+cp -r ./files.bkp/* ./files

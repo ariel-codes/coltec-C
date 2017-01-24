@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1430961642 source:/home/ariel/Documents/Code/Lista2IP/main.c
+	<stdio.h>
+	<math.h>
+	<string.h>
+

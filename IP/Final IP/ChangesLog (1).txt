@@ -1,0 +1,8 @@
+12 julho 2015
+   released version 0.1.37 of Final IP
+
+     Change log:
+        -Added: New user creation system.
+        -Fixed: Set parsing defaults.
+        -Cleaned:  read_user function
+

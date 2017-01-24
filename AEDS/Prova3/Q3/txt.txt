@@ -1,0 +1,5 @@
+﻿	Problema apresentado no trabalho: Árvore Geradora Mínima
+		Nosso trabalho consistia em gerar uma árvore geradora a partir de um grafo não orientado, utilizando o menor peso total de arestas possível. Para isso utilizamos o algoritmo de Kruskal, criado por Joseph Kruskal e publicado na 'Proceedings of the American Mathematical Society' em 1956. Sua complexidade pode ser expressa por: O(E log(V)), onde E corresponde ao número de arestas e V ao número de vértices no grafo.
+
+	Descrição do Algoritmo de Kruskal
+		Ele cria uma floresta F, onde cada vértice nos grafos corresponde a uma árvore independentem, e um conjunto S com todas as arestas do grafo. Aí enquanto o conjunto não for nulo, ele remove uma aresta com o peso mínimo, e se a árvore está conectada a duas árvores diferentes ela é adicionada à floresta (combinando duas árvores a uma únical parcial). Se ela não está conectada é descartada. Ao final da execução ele retorna a árvore geradora mínima. Ele utiliza uma técnica heurística de resolução chamada de /greedy/, onde o algoritmo sempre escolhe o valor ótimo local a cada passo, tentando ir em direção a solução global mais eficiente.

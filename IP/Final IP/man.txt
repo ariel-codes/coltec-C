@@ -1,0 +1,6 @@
+YSolutions Simplified Banking Software
+
+Error Codes:
+
+-1: Invalid File or Pointer
+-10: Data Race/Conflict

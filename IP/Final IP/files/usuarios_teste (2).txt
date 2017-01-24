@@ -1,0 +1,4 @@
+Admin: conta 000000001	senha '1234';
+Ariel: conta 000000002  senha '1234';
+Dummy: conta 000000003	senha '1234senha';
+Dummy2: conta 000000004 senha '1234senha';
