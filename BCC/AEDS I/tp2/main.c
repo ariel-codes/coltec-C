@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
 
 /* Processa cada partida, 
 retorna 1 se J ganha, -1 se Z, e 0 se empatam */
@@ -13,15 +12,18 @@ int play()
         {
             scanf("%d", &jR);
             j += jR;
+            printf("J+ %d\n", jR);
         }
         if (zR != 0)
         {
             scanf("%d", &zR);
             z += zR;
+            printf("Z+ %d\n", zR);
         }
         if (jR == 0 && zR == 0)
         {
             int jDis = abs(j - 21), zDis = abs(z - 21);
+            printf("Diff:\nJ: %d\nZ:%d", jDis, zDis);
             if (jDis == zDis)
                 return 0;
             else
@@ -55,23 +57,13 @@ void main()
             score[1] += 1;
             break;
         }
-        fprintf(output, "Placar: %d x %d\n", score[0], score[1]);
+        printf("Placar: %d x %d\n", score[0], score[1]);
     }
     if (score[0] < score[1])
-        fprintf(output, "Joaozinho\n");
+        printf("Joaozinho\n");
     else if (score[0] > score[1])
-        fprintf(output, "Zezinho\n");
+        printf("Zezinho\n");
     else
-        fprintf(output, "Ambos\n");
-
-    // Volta ao início do stream de output e printa em chuncks de 50 char
-    rewind(output);
-    char buffer[100];
-    while (!feof(output))
-    {
-        if (fgets(buffer, 50, output) == NULL)
-            break;
-        fputs(buffer, stdout);
-    }
-    fclose(output);
+        printf("Ambos\n");
+    return 0;
 }
