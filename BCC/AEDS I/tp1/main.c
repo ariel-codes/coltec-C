@@ -6,31 +6,23 @@ FILE *output;
 void depositos(int iter, int n)
 {
     int j = 0, z = 0, i = n - 1;
-    int out[n];
+    fprintf(output, "Teste %d\n", iter+1);
     for (; n > 0; n--)
     {
         int dj, dz;
         scanf("%d %d", &dj, &dz);
         if (dj < 0 || dz < 0)
-            out[n - 1] = -1;
+            fprintf(output, "Vovo Vitoria nao tira dinheiro dos cofrinhos.\n");
         else
         {
             j += dj;
             z += dz;
-            out[n - 1] = j - z;
+            fprintf(output, "%d\n", j - z);
         }
-    }
-    fprintf(output, "Teste %d\n", iter);
-    for (; i >= 0; i--)
-    {
-        if (out[i] == -1)
-            fprintf(output, "Vovo Vitoria nao tira dinheiro dos cofrinhos.\n");
-        else
-            fprintf(output, "%d\n", out[i]);
     }
 }
 
-int main()
+void main()
 {
     int linhas, iter;
     output = tmpfile();
@@ -41,6 +33,7 @@ int main()
             break;
         else
         {
+            fprintf(output, "\n");
             depositos(iter, linhas);
         }
     }
