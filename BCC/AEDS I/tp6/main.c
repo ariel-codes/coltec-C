@@ -8,9 +8,6 @@ typedef struct abacaxi_Struct
 
 void le_escolhe(int N)
 {
-    if (N == 0)
-        return;
-        
     abacaxi a[N];
     int i;
 
@@ -21,6 +18,7 @@ void le_escolhe(int N)
     for (i = 0; i < N; i++)
         scanf("%f", &a[i].Vc);
 
+    // Índice do abacaxi escolhido
     int escolhido = 0;
     float Ag_escolhido = 0;
     for (i = 0; i < N; i++)
@@ -39,9 +37,11 @@ void main()
 {
     // Número de abacaxis
     int N;
-    while (N)
+    while (1)
     {
         scanf("%d", &N);
+        if (N == 0)
+            return;
         le_escolhe(N);
     }
 }
